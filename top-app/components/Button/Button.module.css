@@ -1,0 +1,52 @@
+.button {
+	box-sizing: border-box;
+
+	border-radius: 5px;
+	padding: 10px;
+
+	cursor: pointer;
+	text-align: center;
+	border: none;
+
+	font-size: 14px;
+
+	transition: all 0.5s;
+}
+
+.primary {
+	color: var(--white);
+	background-color: var(--primary);
+}
+
+.primary:hover {
+	background-color: #4f30cd;
+}
+
+.ghost {
+	color: var(--black);
+	background: none;
+
+	border: 1px solid var(--gray-light);
+}
+
+.ghost:hover {
+	background: var(--primary);
+	color: var(--white);
+}
+
+.arrow {
+	display: inline-block;
+
+	margin-left: 10px;
+}
+
+.down {
+	transform: rotate(90deg);
+	transition: all 0.5s;
+}
+
+.primary svg,
+.ghost:hover svg {
+	fill: var(--white);
+	transition: all 0.5s;
+}

@@ -1,0 +1,88 @@
+.hh {
+	display: grid;
+
+	grid-template-columns: 1fr 3fr;
+	gap: 30px;
+}
+
+.count {
+	padding: 20px;
+	text-align: center;
+}
+
+.salary {
+	display: grid;
+
+	grid-template-columns: 1fr 1fr 1fr;
+	padding: 20px;
+	text-align: center;
+	gap: 20px 0;
+}
+
+.salary>div {
+	border-right: 1px solid var(--gray-light);
+}
+
+.salary>div :last-child {
+	border-right: none;
+}
+
+.title {
+	font-weight: 300;
+	font-size: 20px;
+	line-height: 27px;
+	margin-bottom: 12px;
+}
+
+.countValue {
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 49px;
+	color: var(--primary);
+}
+
+.salaryValue {
+	font-weight: 700;
+	font-size: 26px;
+	line-height: 35px;
+	color: var(--black)
+}
+
+.rate {
+	display: grid;
+
+	grid-template-columns: repeat(3, 20px);
+	justify-content: center;
+	gap: 10px;
+
+	margin-top: 12px;
+}
+
+.filled circle {
+	fill: var(--red);
+}
+
+@media (max-width: 1200px) {
+	.hh {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 640px) {
+	.salary {
+		display: grid;
+
+		grid-template-columns: 1fr;
+	}
+
+	.salary>div {
+		border-bottom: 1px solid var(--gray-light);
+		border-right: none;
+		padding-bottom: 20px;
+	}
+
+	.salary>div :last-child {
+		padding-bottom: 0;
+		border-bottom: 0;
+	}
+}

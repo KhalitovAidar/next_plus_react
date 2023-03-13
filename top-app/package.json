@@ -1,0 +1,41 @@
+{
+	"name": "top-app",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"prepare": "husky install",
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"axios": "^1.1.2",
+		"classnames": "^2.3.2",
+		"date-fns": "^2.29.3",
+		"framer-motion": "^7.6.1",
+		"next": "12.3.1",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"react-hook-form": "^7.37.0",
+		"react-yandex-metrika": "^2.6.0"
+	},
+	"devDependencies": {
+		"@svgr/webpack": "^6.4.0",
+		"@types/classnames": "^2.3.1",
+		"@types/node": "^18.8.2",
+		"@types/react": "^18.0.21",
+		"@typescript-eslint/eslint-plugin": "^5.39.0",
+		"@typescript-eslint/parser": "^5.39.0",
+		"eslint": "^8.24.0",
+		"eslint-config-next": "12.3.1",
+		"eslint-plugin-react-hooks": "^4.6.0",
+		"html-react-parser": "^3.0.4",
+		"husky": "^8.0.1",
+		"stylelint": "^14.13.0",
+		"stylelint-config-property-sort-order-smacss": "^9.0.0",
+		"stylelint-config-standard": "^28.0.0",
+		"stylelint-order": "^5.0.0",
+		"typescript": "^4.8.4"
+	}
+}
