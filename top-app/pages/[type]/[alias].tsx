@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: G
 		const { data: page } = await axios.get<TopPageModel>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/byAlias/' + params.alias);
 		const { data: product } = await axios.post<ProductModel[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/product/find', {
 			category: page.category,
-			limit: 10
+			limit: 60
 		});
 		return {
 			props: {
@@ -82,7 +82,8 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: G
 				firstCategory: firstCategoryItem.id,
 				page,
 				product
-			}
+			},
+			revalidate: 10
 		};
 	} catch {
 		return {
