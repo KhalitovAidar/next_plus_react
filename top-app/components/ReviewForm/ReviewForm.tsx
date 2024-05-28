@@ -8,13 +8,35 @@ import { Button } from '../Button/Button';
 import CloseIcon from './close.svg';
 import { IReviewForm } from './ReviewForm.interface';
 import { useForm, SubmitHandler, Controller } from 'react-hook-form';
+import axios from "axios";
+import {parseCookies} from "nookies";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
 	const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>();
 
-	const onSubmit: SubmitHandler<IReviewForm> = (data: IReviewForm) => {
-		console.log(data);
+	const onSubmit: SubmitHandler<IReviewForm> = async (data: IReviewForm) => {
+		const { token } = parseCookies();
+
+		if (!token) {
+			return {
+				redirect: {
+					destination: '/auth',
+					permanent: false,
+				},
+			};
+		}
+
+		const {username, ...restData} = data;
+		const requestData = {
+			productId,
+			...restData
+		};
+
+		const response = await axios.post('http://localhost:8080' + '/reviews/set', requestData,
+			{
+				headers: { Authorization: `Bearer ${token}` }
+			});
 	};
 
 	return (
@@ -23,9 +45,9 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 				{...props}
 			>
 				<Input
-					{...(register('name'), { required: true })}
+					{...(register('username'), { required: true })}
 					placeholder='Имя'
-					error={errors.name}
+					error={errors.username}
 				/>
 				<Input {...register('title')} className={styles.title} placeholder='Заголовок' />
 				<div className={styles.rating}>

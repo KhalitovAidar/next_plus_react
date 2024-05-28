@@ -1,6 +1,14 @@
 module.exports = {
+	// async rewrites() {
+	// 	return [
+	// 		{
+	// 			source: '/:path*',
+	// 			destination: 'http://localhost:8080/:path*',
+	// 		},
+	// 	]
+	// },
 	images: {
-		domains: ['courses-top.ru']
+		domains: ['courses-top.ru', 'old-images.hb.ru-msk.vkcs.cloud']
 	},
 	webpack(config, options) {
 		config.module.rules.push({
