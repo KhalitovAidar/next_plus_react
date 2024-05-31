@@ -1,25 +1,21 @@
-import styles from "./Auth.module.css";
+import styles from "./Login.module.css";
 import {useForm} from "react-hook-form";
-import {AuthForm} from "./AuthForm.interface";
+import {LoginForm} from "./LoginForm.interface";
 import cn from "classnames";
 import {Input} from "../Input/Input";
 import {Button} from "../Button/Button";
 import axios from "axios";
 import Cookie, {CookieAttributes} from "js-cookie";
-import {AuthProps} from "./Auth.props";
+import {LoginProps} from "./Login.props";
 import {useState} from "react";
-import {useRouter} from "next/router";
 
-export const Auth = ({ className, ...props }: AuthProps ): JSX.Element => {
-    const { register, control, handleSubmit, formState: { errors } } = useForm<AuthForm>();
+export const Login = ({ className, ...props }: LoginProps ): JSX.Element => {
+    const { register, control, handleSubmit, formState: { errors } } = useForm<LoginForm>();
     const [errorMessage, setErrorMessage] = useState<string>('');
-    const router = useRouter();
 
-    const onSubmit = async (data: AuthForm) => {
+    const onSubmit = async (data: LoginForm) => {
         try {
-            console.log(process.env.BACK_PUBLIC_DOMAIN + '/auth/sign-up');
-            console.log(data);
-            const response = await axios.post('http://localhost:8080' + '/auth/sign-up', data);
+            const response = await axios.post('http://localhost:8080' + '/auth/sign-in', data);
             const { token } = response.data;
             console.log(token);
 
@@ -31,7 +27,6 @@ export const Auth = ({ className, ...props }: AuthProps ): JSX.Element => {
 
 
             Cookie.set('token', token, cookieOptions);
-            router.push('/');
         } catch (error) {
             console.error('Ошибка при отправке запроса:', error);
         }
@@ -41,7 +36,7 @@ export const Auth = ({ className, ...props }: AuthProps ): JSX.Element => {
         <div className={cn(styles.container, className)}
              {...props}
         >
-            <h1>Регистрация</h1>
+            <h1>Вход</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className={cn(styles.authForm, className)}
                      {...props}
@@ -52,7 +47,6 @@ export const Auth = ({ className, ...props }: AuthProps ): JSX.Element => {
                         placeholder='Имя'
                         error={errors.username}
                     />
-                    <Input {...register('email')} className={styles.field} placeholder='Email'/>
 
                     <Input {...register('password')} className={styles.field} placeholder='Пароль'/>
 
@@ -60,8 +54,8 @@ export const Auth = ({ className, ...props }: AuthProps ): JSX.Element => {
                         <Button appereance='primary'>Отправить</Button>
                     </div>
                     <div className={cn(styles.hasAcc, className)}>
-                        <span>Уже есть аккаунт?</span>
-                        <a className={cn(styles.loginLink, className)} href="/login">Вход</a>
+                        <span>Ещё нет аккаунт?</span>
+                        <a className={cn(styles.loginLink, className)} href="/auth">Вход</a>
                     </div>
                 </div>
             </form>

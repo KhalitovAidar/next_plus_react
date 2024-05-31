@@ -73,7 +73,7 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
 			if (axiosError.response && axiosError.response.status === 403) {
 				return {
 					redirect: {
-						destination: '/login',
+						destination: '/login.tsx',
 						permanent: false,
 					},
 				};

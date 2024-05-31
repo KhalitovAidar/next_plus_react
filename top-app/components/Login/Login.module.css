@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+
+.authForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.hasAcc {
+    display: flex;
+    gap: 5px;
+}
+
+.loginLink:hover {
+    color: var(--primary);
+}
+
+.field {
+}
